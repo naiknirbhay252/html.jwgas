@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jwala Gas | Powering Every Home. Fueling Every Business.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand-logo" aria-label="Jwala Gas Home">
+        <img src="assets/logo.png" alt="Jwala Gas Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <span class="logo-fallback" style="display:none;">
+          <span class="flame-icon">🔥</span>
+          <span class="logo-text"><strong>Jwala</strong> <span>Gas</span></span>
+        </span>
+      </a>
+
+      <button class="hamburger-btn" id="menuToggle" aria-label="Toggle Navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Primary Navigation">
+      <ul>
+        <li><a href="#services" class="nav-link">Our Service & amp; Products</a></li>
+        <li><a href="#dealership" class="nav-link">Dealership Enquiry</a></li>
+        <li><a href="#why-choose-us" class="nav-link">Why Choose Us</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
+        <li><a href="#contact" class="nav-link">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-media">
+        <img src="assets/hero-tanker.jpg" alt="Jwala Gas Industrial Storage Tanker" class="hero-img">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+          <h1>Powering Every<br>Home.<br>Fueling Every<br>Business.</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Service And Products -->
+    <section class="services-section container" id="services">
+      <h2 class="section-title">Our Service And Products</h2>
+
+      <!-- Featured Cylinder Range Banner -->
+      <article class="featured-banner-card">
+        <img src="assets/cylinders-lineup.jpg" alt="4kg, 12kg, 19.2kg, 33kg, and 425kg Jwala Gas Cylinders">
+        <div class="featured-banner-text">
+          <h3>LPG Solutions for Every<br><span class="text-red">Requirement</span></h3>
+        </div>
+      </article>
+
+      <!-- 2-Column Grid: Commercial & Domestic -->
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <img src="assets/commercial-lpg.jpg" alt="Commercial LPG Cylinders in Restaurant Kitchen">
+          </div>
+          <p class="product-caption">Commercial LPG Cylinders</p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <img src="assets/domestic-lpg.jpg" alt="Domestic LPG Cylinders in Home Kitchen">
+          </div>
+          <p class="product-caption">Domestic LPG Cylinders</p>
+        </article>
+      </div>
+
+      <!-- Full-Width Feature: Bulk Gas Supply -->
+      <article class="product-card product-card-wide">
+        <div class="product-img-wrap">
+          <img src="assets/bulk-supply.jpg" alt="Jwala Gas Bulk Tanker Filling Facility">
+        </div>
+        <p class="product-caption text-center">Bulk Gas Supply</p>
+      </article>
+
+      <!-- 2-Column Grid: 425kg & 33kg Cylinders -->
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <img src="assets/cylinder-425kg.jpg" alt="425kg Industrial LPG Cylinder">
+          </div>
+          <p class="product-caption">425kg Industrial Cylinder</p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <img src="assets/cylinder-33kg.jpg" alt="33kg Red LPG Cylinder">
+          </div>
+          <p class="product-caption">33kg LPG Cylinder</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Build Your Business / Dealership Section -->
+    <section class="dealership-section container" id="dealership">
+      <h2 class="section-title">Build Your Business with JWALA GAS.</h2>
+
+      <div class="dealership-banner">
+        <img src="assets/dealership-banner.jpg" alt="Business partners shaking hands at Jwala Gas facility">
+        <div class="dealership-banner-overlay"></div>
+        <h3>Turn Your Ambition into<br>Opportunity</h3>
+      </div>
+
+      <p class="dealership-intro">
+        Start your business journey with us. Submit your dealership enquiry and our team will get in touch with you.
+      </p>
+
+      <!-- Dealership Enquiry Form Card -->
+      <div class="enquiry-card">
+        <h3 class="enquiry-title">Dealership Enquiry</h3>
+        <p class="enquiry-subtitle">Enter your details below</p>
+
+        <form id="dealershipForm" novalidate>
+          <div class="form-group">
+            <label for="fullName">YOUR NAME</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your Full Name" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phoneNumber">PHONE NUMBER</label>
+              <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+91 -" required>
+            </div>
+
+            <div class="form-group">
+              <label for="emailAddress" class="label-sentence">Email Address</label>
+              <input type="email" id="emailAddress" name="emailAddress" placeholder="Your email" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="location" class="label-sentence">Preferred Dealership Location *</label>
+            <input type="text" id="location" name="location" placeholder="City / District / State" required>
+          </div>
+
+          <div class="form-group">
+            <label class="label-sentence">Dealership Type *</label>
+            <div class="pill-group" role="radiogroup" aria-label="Dealership Type">
+              <button type="button" class="pill-btn" data-value="Domestic LPG">Domestic LPG</button>
+              <button type="button" class="pill-btn" data-value="Commercial LPG">Commercial LPG</button>
+              <button type="button" class="pill-btn" data-value="Both">Both</button>
+            </div>
+            <input type="hidden" id="dealershipType" name="dealershipType" required>
+          </div>
+
+          <div class="form-group">
+            <label for="experience" class="label-sentence">Business Experience</label>
+            <input type="text" id="experience" name="experience" placeholder="your experience">
+          </div>
+
+          <div class="form-group">
+            <label for="additionalInfo" class="label-sentence">Additional Information</label>
+            <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Tell us about your business interest..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Enquiry</button>
+          <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us-section container" id="why-choose-us">
+      <h2 class="section-title">Why Choose Us?</h2>
+
+      <div class="why-us-grid">
+        <!-- Item 1 -->
+        <div class="why-item">
+          <div class="why-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#D92D20" stroke-width="2">
+              <circle cx="24" cy="24" r="18" stroke-dasharray="3 2"/>
+              <circle cx="24" cy="24" r="13"/>
+              <text x="24" y="27" text-anchor="middle" fill="#D92D20" stroke="none" font-size="10" font-weight="700" font-family="Poppins">30+</text>
+            </svg>
+          </div>
+          <h3>Decades of Experience</h3>
+          <p>Industry roots dating back to 1995.</p>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="why-item">
+          <div class="why-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#D92D20" stroke-width="2">
+              <circle cx="24" cy="24" r="18"/>
+              <path d="M14 21L24 14L34 21H14Z"/>
+              <line x1="18" y1="21" x2="18" y2="30"/>
+              <line x1="24" y1="21" x2="24" y2="30"/>
+              <line x1="30" y1="21" x2="30" y2="30"/>
+              <line x1="13" y1="30" x2="35" y2="30"/>
+            </svg>
+          </div>
+          <h3>Established Foundation</h3>
+          <p>Industry roots dating back to 1995.</p>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="why-item">
+          <h3>Future Focused</h3>
+          <p>A new identity with a vision for growth.</p>
+          <div class="why-icon why-icon-bottom" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#D92D20" stroke-width="2">
+              <circle cx="24" cy="24" r="18"/>
+              <rect x="15" y="25" width="4" height="7"/>
+              <rect x="22" y="21" width="4" height="11"/>
+              <rect x="29" y="17" width="4" height="15"/>
+              <path d="M14 22L22 16L27 18L33 13"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="why-item">
+          <h3>Commitment</h3>
+          <p>Industry roots dating back to 1995.</p>
+          <div class="why-icon why-icon-bottom" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#D92D20" stroke-width="2">
+              <circle cx="24" cy="24" r="18"/>
+              <path d="M24 33C24 33 13 26.5 13 19.5C13 16.5 15.5 14 18.5 14C20.5 14 22.5 15 24 17C25.5 15 27.5 14 29.5 14C32.5 14 35 16.5 35 19.5C35 26.5 24 33 24 33Z"/>
+              <path d="M18 22L22 25L29 19"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us & Our Experience Section -->
+    <section class="about-section container" id="about">
+      <div class="about-card">
+        <h2>About us</h2>
+        <p class="about-tagline">Experience That Fuels Our Journey</p>
+
+        <p>Jwala Gas is a growing name in the LPG sector, focused on providing domestic and commercial gas solutions.</p>
+        <p>Built on a foundation of industry experience dating back to 1995, we bring valuable knowledge and business experience to the LPG industry.</p>
+        <p>Our journey reflects a commitment to dependable service, customer relationships and the evolving energy needs of homes and businesses.</p>
+        <p>With a new identity and a forward-looking vision, Jwala Gas aims to make LPG solutions accessible and convenient for its customers.</p>
+
+        <h2 class="experience-heading">Our Experience</h2>
+        <p class="about-tagline">A Legacy of Experience. A Vision for Tomorrow.</p>
+
+        <p>Our journey in the gas industry dates back to 1995. Over the years, the business has developed valuable industry experience and knowledge.</p>
+        <p>Today, Jwala Gas represents a new chapter, bringing that experience forward under a new brand identity.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Contact Us Footer -->
+  <footer class="contact-footer container" id="contact">
+    <div class="footer-card">
+      <h2>Contact Us</h2>
+      <p class="footer-lead">Let’s Connect</p>
+      <p class="footer-desc">For domestic and commercial LPG enquiries, connect with Jwala Gas.</p>
+
+      <div class="contact-details">
+        <p>Phone: <a href="tel:99009900">99009900</a></p>
+        <p>Email: <a href="mailto:jwala_lpg.com">jwala_lpg.com</a></p>
+      </div>
+
+      <address class="footer-address">
+        <strong>Registered / Business Address:</strong><br>
+        Plot No. 109, Belur Industrial Area,<br>
+        Dharwad, Karnataka – 580011, India.
+      </address>
+
+      <div class="footer-hours">
+        <strong>Business Hours</strong><br>
+        Monday – Saturday<br>
+        9:00 AM – 7:00 PM IST
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
