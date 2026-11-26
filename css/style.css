@@ -47,9 +47,9 @@ img {
 
 .container {
   width: 100%;
-  max-width: 720px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 .section-title {
@@ -77,7 +77,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  height: 48px;
 }
 
 .brand-logo {
@@ -180,8 +180,8 @@ img {
    ========================================= */
 .hero-section {
   width: 100%;
-  max-width: 720px;
-  margin: 0 auto 32px;
+  max-width: 100%;
+  margin: 0 auto 48px;
 }
 
 .hero-media {
@@ -283,6 +283,7 @@ img {
 .product-card:hover {
   transform: translateY(-3px);
 }
+
 
 .product-img-wrap {
   width: 100%;
@@ -386,6 +387,15 @@ img {
   margin-bottom: 20px;
 }
 
+.form-section-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
 .form-group {
   margin-bottom: 16px;
 }
@@ -412,6 +422,7 @@ img {
 }
 
 .enquiry-card input,
+.enquiry-card select,
 .enquiry-card textarea {
   width: 100%;
   background-color: #FFFFFF;
@@ -423,6 +434,13 @@ img {
   color: var(--text-dark);
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.enquiry-card select:disabled,
+.enquiry-card input[readonly] {
+  background-color: #F9F6F2;
+  color: var(--text-muted);
+  cursor: not-allowed;
 }
 
 .enquiry-card input::placeholder,
@@ -467,25 +485,34 @@ img {
   font-weight: 600;
 }
 
+#dealershipForm {
+  display: flex;
+  flex-direction: column;
+}
+
 .submit-btn {
+  display: block;
   width: 100%;
-  margin-top: 6px;
-  padding: 14px 20px;
-  border: none;
-  border-radius: var(--radius-sm);
-  background: linear-gradient(90deg, #D92D20 0%, #F58A19 100%);
+  grid-column: 1 / -1;
+  margin-top: 16px;
+  padding: 14px 24px;
+  background: var(--primary-gradient, linear-gradient(135deg, #D92D20 0%, #F97316 100%));
   color: #FFFFFF;
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm, 8px);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.submit-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(217, 45, 32, 0.3);
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
+
 
 .form-feedback {
   margin-top: 12px;
@@ -675,5 +702,227 @@ img {
 
   .featured-banner-card img {
     height: 220px;
+  }
+}
+/* =========================================
+   10. Laptop & Desktop Layout (900px and up)
+   ========================================= */
+@media (min-width: 900px) {
+  /* Show horizontal desktop nav links instead of hamburger */
+  .hamburger-btn {
+    display: none;
+  }
+
+  .mobile-nav {
+    max-height: none;
+    overflow: visible;
+    border-bottom: none;
+    background: transparent;
+  }
+
+  .header-inner {
+    height: 78px;
+  }
+
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 max(24px, calc((100vw - 1200px) / 2));
+  }
+
+  .site-header .header-inner {
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-nav li + li {
+    border-top: none;
+  }
+
+  .mobile-nav .nav-link {
+    padding: 8px 0;
+    font-size: 0.95rem;
+  }
+
+  /* Full-width tall Hero Banner */
+  .hero-img {
+    height: 520px;
+  }
+
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .hero-content h1 {
+    font-size: 3.4rem;
+  }
+
+  /* Larger Section Titles */
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 24px;
+  }
+
+  /* Featured LPG Lineup Banner */
+  .featured-banner-card img {
+    height: 400px;
+  }
+
+  .featured-banner-text {
+    top: 28px;
+    left: 32px;
+  }
+
+  .featured-banner-text h3 {
+    font-size: 2.1rem;
+  }
+
+  /* 4-Column Product Showcase on PC */
+  .services-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  .services-section .section-title,
+  .services-section .featured-banner-card,
+  .services-section .product-card-wide {
+    grid-column: 1 / -1;
+  }
+
+  .services-section .product-grid {
+    display: contents;
+  }
+
+  .product-card-wide .product-img-wrap {
+    aspect-ratio: 21 / 9;
+  }
+
+  /* Side-by-Side Dealership Banner & Enquiry Form */
+  .dealership-section {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 28px 32px;
+    align-items: start;
+  }
+
+  .dealership-section .section-title {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  .dealership-banner {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0;
+  }
+
+  .dealership-banner img {
+    height: 440px;
+  }
+
+  .dealership-intro {
+    grid-column: 1;
+    grid-row: 3;
+    font-size: 1rem;
+  }
+
+  .enquiry-card {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    padding: 32px 28px;
+  }
+
+  /* 4-Column Why Choose Us Grid */
+  .why-us-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  /* Put all 4 Why Choose Us icons consistently at the top on PC */
+  .why-icon-bottom {
+    order: -1;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  /* Two-Column About Us & Our Experience */
+  .about-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    column-gap: 40px;
+    padding: 36px 34px;
+  }
+
+  .about-card h2:first-of-type,
+  .about-card .about-tagline:first-of-type,
+  .about-card p:nth-of-type(2),
+  .about-card p:nth-of-type(3),
+  .about-card p:nth-of-type(4),
+  .about-card p:nth-of-type(5) {
+    grid-column: 1;
+  }
+
+  .experience-heading {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+  }
+
+  .about-card .experience-heading + .about-tagline {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .about-card p:nth-of-type(7) {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .about-card p:nth-of-type(8) {
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+  /* Horizontal Footer Layout on PC */
+  .footer-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 20px 32px;
+    padding: 36px 34px;
+  }
+
+  .footer-card h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 4px;
+  }
+
+  .footer-lead,
+  .footer-desc,
+  .contact-details {
+    grid-column: 1;
+  }
+
+  .footer-address {
+    grid-column: 2;
+    grid-row: 2 / 5;
+    margin: 0;
+  }
+
+  .footer-hours {
+    grid-column: 3;
+    grid-row: 2 / 5;
   }
 }
