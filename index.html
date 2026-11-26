@@ -138,17 +138,34 @@
               <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+91 -" required>
             </div>
 
+           <div class="form-group">
+            <label for="emailAddress" class="label-sentence">Email Address *</label>
+            <input type="email" id="emailAddress" name="emailAddress" placeholder="you@example.com" required>
+          </div>
+
+<p class="form-section-heading">Select Your Preferred Dealership Location</p>
+
+          
+            <div class="form-row">
             <div class="form-group">
-              <label for="emailAddress" class="label-sentence">Email Address</label>
-              <input type="email" id="emailAddress" name="emailAddress" placeholder="Your email" required>
+              <label for="pincode" class="label-sentence">PIN Code *</label>
+              <input type="text" id="pincode" name="pincode" maxlength="6" inputmode="numeric" placeholder="e.g. 580011" required>
+            </div>
+
+            <div class="form-group">
+              <label for="areaSelect" class="label-sentence">Area / Locality *</label>
+              <select id="areaSelect" name="areaSelect" disabled required>
+                <option value="">Enter 6-digit PIN first</option>
+              </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="location" class="label-sentence">Preferred Dealership Location *</label>
-            <input type="text" id="location" name="location" placeholder="City / District / State" required>
+            <label for="location" class="label-sentence">District &amp; State *</label>
+            <input type="text" id="location" name="location" placeholder="Auto-filled from PIN code" readonly required>
           </div>
 
+       
           <div class="form-group">
             <label class="label-sentence">Dealership Type *</label>
             <div class="pill-group" role="radiogroup" aria-label="Dealership Type">
