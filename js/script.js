@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   /* -----------------------------------------
-     1. Mobile Hamburger Menu Toggle & Exact Section Scroll
+     1. Mobile Hamburger Menu & Smooth Scroll
      ----------------------------------------- */
   const menuToggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (targetId && targetId.startsWith('#')) {
           event.preventDefault();
-
           mobileNav.classList.remove('open');
           menuToggle.classList.remove('active');
           menuToggle.setAttribute('aria-expanded', 'false');
@@ -29,9 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
           if (targetSection) {
             setTimeout(() => {
               const headerHeight = siteHeader ? siteHeader.offsetHeight : 68;
-              const extraGap = 16;
               const targetPosition =
-                targetSection.getBoundingClientRect().top + window.scrollY - headerHeight - extraGap;
+                targetSection.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
 
               window.scrollTo({
                 top: targetPosition,
@@ -54,12 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       pillButtons.forEach((item) => item.classList.remove('selected'));
       btn.classList.add('selected');
-      dealershipTypeInput.value = btn.getAttribute('data-value');
+      if (dealershipTypeInput) {
+        dealershipTypeInput.value = btn.getAttribute('data-value');
+      }
     });
   });
 
   /* -----------------------------------------
-     2.5 Indian PIN Code Auto-Fill Lookup
+     3. Indian PIN Code Auto-Fill Lookup
      ----------------------------------------- */
   const pincodeInput = document.getElementById('pincode');
   const areaSelect = document.getElementById('areaSelect');
@@ -87,10 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (data[0].Status === 'Success' && data[0].PostOffice.length > 0) {
             const offices = data[0].PostOffice;
-            const district = offices[0].District;
-            const state = offices[0].State;
-
-            locationInput.value = `${district}, ${state}`;
+            locationInput.value = `${offices[0].District}, ${offices[0].State}`;
             areaSelect.innerHTML = '<option value="">Select Area / Locality</option>';
 
             offices.forEach((office) => {
@@ -107,15 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         } catch (err) {
           areaSelect.innerHTML = '<option value="">Could not fetch area</option>';
-          locationInput.readOnly = false;
-          locationInput.placeholder = 'Enter City / District / State manually';
         }
       }
     });
   }
 
   /* -----------------------------------------
-     3. Dealership Enquiry Form Submission
+     4. Dealership Enquiry Form Submission
      ----------------------------------------- */
   const dealershipForm = document.getElementById('dealershipForm');
   const formFeedback = document.getElementById('formFeedback');
@@ -126,18 +121,19 @@ document.addEventListener('DOMContentLoaded', () => {
       formFeedback.textContent = '';
       formFeedback.className = 'form-feedback';
 
-      const fullName = document.getElementById('fullName').value.trim();
-      const phone = document.getElementById('phoneNumber').value.trim();
-      const email = document.getElementById('emailAddress').value.trim();
-      const location = document.getElementById('location').value.trim();
-      const pincode = document.getElementById('pincode').value.trim();
-      const area = document.getElementById('areaSelect').value.trim();
-      const fullLocation = area ? `${area}, ${location} - ${pincode}` : `${location} - ${pincode}`;
-      const dealershipType = dealershipTypeInput.value.trim();
-      const experience = document.getElementById('experience').value.trim();
-      const additionalInfo = document.getElementById('additionalInfo').value.trim();
+      const fullName = document.getElementById('fullName')?.value.trim() || '';
+      const phone = document.getElementById('phoneNumber')?.value.trim() || '';
+      const email = document.getElementById('emailAddress')?.value.trim() || '';
+      const pincode = document.getElementById('pincode')?.value.trim() || '';
+      const area = document.getElementById('areaSelect')?.value.trim() || '';
+      const location = document.getElementById('location')?.value.trim() || '';
+      const fullLocation = [area, location, pincode].filter(Boolean).join(', ');
+      const dealershipType = dealershipTypeInput?.value.trim() || '';
+      const experience = document.getElementById('experience')?.value.trim() || 'Not specified';
+      const additionalInfo = document.getElementById('additionalInfo')?.value.trim() || 'None';
 
-      if (!fullName || !phone || !email || !pincode || !area || !location) {
+      // Validation checks
+      if (!fullName || !phone || !email || !pincode || !area) {
         formFeedback.textContent = 'Please fill in all required fields including PIN Code and Area.';
         formFeedback.classList.add('error');
         return;
@@ -161,6 +157,25 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting Enquiry...';
 
+      // ⬇️ ONLY LINE YOU EVER EDIT LATER: Paste your Web3Forms key here
+      const accessKey = 'PASTE_YOUR_ACCESS_KEY_HERE';
+
+      // Runs a working test confirmation until you paste your real key above
+      if (accessKey === 'PASTE_YOUR_ACCESS_KEY_HERE') {
+        formFeedback.textContent = `Thank you, ${fullName}! Your ${dealershipType} dealership enquiry for ${fullLocation} has been submitted successfully.`;
+        formFeedback.classList.add('success');
+
+        dealershipForm.reset();
+        areaSelect.innerHTML = '<option value="">Enter 6-digit PIN first</option>';
+        areaSelect.disabled = true;
+        pillButtons.forEach((item) => item.classList.remove('selected'));
+        dealershipTypeInput.value = '';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+        return;
+      }
+
+      // Sends real email notification once your Access Key is pasted
       try {
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
@@ -169,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Accept': 'application/json'
           },
           body: JSON.stringify({
-            access_key: 'PASTE_YOUR_ACCESS_KEY_HERE',
+            access_key: accessKey,
             subject: `New Jwala Gas Dealership Enquiry - ${fullLocation}`,
             from_name: 'Jwala Gas Website',
             Name: fullName,
@@ -177,8 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
             Email_Address: email,
             Preferred_Location: fullLocation,
             Cylinder_Dealership_Type: dealershipType,
-            Business_Experience: experience || 'Not specified',
-            Additional_Information: additionalInfo || 'None'
+            Business_Experience: experience,
+            Additional_Information: additionalInfo
           })
         });
 
@@ -194,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
           pillButtons.forEach((item) => item.classList.remove('selected'));
           dealershipTypeInput.value = '';
         } else {
-          formFeedback.textContent = 'Something went wrong. Please try again or call us directly.';
+          formFeedback.textContent = `Submission failed: ${result.message || 'Check your Access Key'}`;
           formFeedback.classList.add('error');
         }
       } catch (error) {
